@@ -2,7 +2,7 @@
 
 Delivery order price calculator web app using React, Vite and TypeScript, which calculates delivery fees and surcharges based on user input and shows the calculated total price to the user.
 
-## How to use:
+## Installation instructions:
 ```
 cd ordercalc
 npm install

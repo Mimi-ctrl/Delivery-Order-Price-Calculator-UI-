@@ -31,3 +31,15 @@ Used time: 3h
 
 Next Step:
 - Implement API integration for dynamic price calculations.
+
+-----------------------------------------------------------------------------------------
+
+Date: 2025-01-19
+Used time: 4h
+
+- Refactored code for improved readability, modularity, and maintainability. Separated components, optimized state management, and ensured alignment with best practices.
+
+Next Step:
+- Implement API integration for dynamic price calculations.
+- Add an error message if the wrong type of information is entered in the field.
+- More code refactoring.

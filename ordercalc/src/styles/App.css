@@ -9,7 +9,7 @@
 
 /* Header styling */
 .header {
-  color: #007BFF;
+  color: #007bff;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -50,7 +50,7 @@
 }
 
 .price-breakdown h5 {
-  color: #007BFF;
+  color: #007bff;
   margin-bottom: 15px;
   margin-top: 15px;
 }
@@ -68,5 +68,5 @@
 /* Details */
 .details {
   padding-left: 15px;
-  color: #007BFF;
+  color: #007bff;
 }
