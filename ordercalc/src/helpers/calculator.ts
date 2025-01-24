@@ -1,11 +1,15 @@
 import { PriceBreakdown } from "../types"
 
-export const calculateDeliveryPrice = (
+export const calculateOrderPrice = (
   cartValue: number,
   deliveryFee: number,
-  deliveryDistance: number
+  deliveryDistance: number,
+  orderMinimumNoSurcharge: number
 ): PriceBreakdown => {
-  const smallOrderSurcharge = cartValue < 10 ? 10 - cartValue : 0
+  const smallOrderSurcharge =
+    cartValue < orderMinimumNoSurcharge / 100
+      ? orderMinimumNoSurcharge / 100 - cartValue
+      : 0
   const totalPrice =
     cartValue > 0 ? cartValue + deliveryFee + smallOrderSurcharge : 0
 
@@ -22,12 +26,14 @@ export const handleSetPriceBreakdown = (
   cartValue: number,
   deliveryFee: number,
   deliveryDistance: number,
+  orderMinimumNoSurcharge: number,
   setPriceBreakdown: (breakdown: PriceBreakdown) => void
 ) => {
-  const priceBreakdown = calculateDeliveryPrice(
+  const priceBreakdown = calculateOrderPrice(
     cartValue,
     deliveryFee,
-    deliveryDistance
+    deliveryDistance,
+    orderMinimumNoSurcharge
   )
   setPriceBreakdown(priceBreakdown)
 }

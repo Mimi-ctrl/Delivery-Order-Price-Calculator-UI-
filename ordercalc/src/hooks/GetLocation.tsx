@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const GetLocation = () => {
+export const GetLocation = () => {
   const [userLatitude, setUserLatitude] = useState<string>("0")
   const [userLongitude, setUserLongitude] = useState<string>("0")
 
@@ -27,5 +27,3 @@ const GetLocation = () => {
     setUserLongitude,
   }
 }
-
-export default GetLocation

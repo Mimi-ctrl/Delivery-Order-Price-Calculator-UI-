@@ -1,11 +1,13 @@
-import { useState } from "react"
-import GetLocation from "./hooks/GetLocation"
-import { handleSetPriceBreakdown } from "./hooks/calculator"
-import DeliveryOrderForm from "./components/DeliveryOrderForm"
+import { useEffect, useState } from "react"
+import { GetLocation } from "./hooks/GetLocation"
+import { DeliveryOrderForm } from "./components/DeliveryOrderForm"
 import { PriceBreakdown } from "./types"
+import { getVenueData } from "./networking/api"
+import { ExtractedData } from "./types/data"
+import { handleCalculateTotalPrice } from "./helpers/handleCalculateTotalPrice"
 import "./styles/App.css"
 
-const DeliveryOrderPriceCalculator = () => {
+export const DeliveryOrderPriceCalculator = () => {
   const {
     userLatitude,
     userLongitude,
@@ -13,10 +15,12 @@ const DeliveryOrderPriceCalculator = () => {
     setUserLatitude,
     setUserLongitude,
   } = GetLocation()
-  const [venueSlug, setVenueSlug] = useState<string>(
-    "home-assignment-venue-helsinki"
-  )
+
+  const venueSlug = "home-assignment-venue-helsinki"
+  const [venueData, setVenueData] = useState<ExtractedData | null>(null)
   const [cartValue, setCartValue] = useState<string>("0")
+  const [deliveryNotAvailable, setDeliveryNotAvailable] =
+    useState<boolean>(false)
   const [priceBreakdown, setPriceBreakdown] = useState<PriceBreakdown>({
     cartValue: 0,
     deliveryFee: 0,
@@ -25,15 +29,28 @@ const DeliveryOrderPriceCalculator = () => {
     totalPrice: 0,
   })
 
-  const handleCalculateDeliveryPrice = () => {
-    const cartValueNumber = parseFloat(cartValue)
-    handleSetPriceBreakdown(cartValueNumber, 1.9, 177, setPriceBreakdown)
+  useEffect(() => {
+    const fetchData = async () => {
+      const venue = await getVenueData(venueSlug)
+      setVenueData(venue)
+    }
+    fetchData()
+  }, [venueSlug])
+
+  const handleCalculateOrderPrice = () => {
+    handleCalculateTotalPrice(
+      cartValue,
+      venueData,
+      userLatitude,
+      userLongitude,
+      setPriceBreakdown,
+      setDeliveryNotAvailable
+    )
   }
 
   return (
     <DeliveryOrderForm
       venueSlug={venueSlug}
-      setVenueSlug={setVenueSlug}
       cartValue={cartValue}
       setCartValue={setCartValue}
       userLatitude={userLatitude}
@@ -41,10 +58,9 @@ const DeliveryOrderPriceCalculator = () => {
       userLongitude={userLongitude}
       setUserLongitude={setUserLongitude}
       getLocation={getLocation}
-      handleCalculateDeliveryPrice={handleCalculateDeliveryPrice}
+      handleCalculateOrderPrice={handleCalculateOrderPrice}
       priceBreakdown={priceBreakdown}
+      deliveryNotAvailable={deliveryNotAvailable}
     />
   )
 }
-
-export default DeliveryOrderPriceCalculator

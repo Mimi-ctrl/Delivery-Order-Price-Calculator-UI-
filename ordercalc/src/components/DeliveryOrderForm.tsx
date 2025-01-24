@@ -7,26 +7,25 @@ import {
   Divider,
 } from "@mui/material"
 import { PriceBreakdown } from "../types"
-import PriceBreakdownBox from "../components/PriceBreakdownBox"
+import { PriceBreakdownBox } from "../components/PriceBreakdownBox"
 
 type DeliveryOrderFormProps = {
-  venueSlug: string;
-  setVenueSlug: (value: string) => void;
-  cartValue: string;
-  setCartValue: (value: string) => void;
-  userLatitude: string;
-  setUserLatitude: (value: string) => void;
-  userLongitude: string;
-  setUserLongitude: (value: string) => void;
-  getLocation: () => void;
-  handleCalculateDeliveryPrice: () => void;
-  priceBreakdown: PriceBreakdown;
+  venueSlug: string
+  cartValue: string
+  setCartValue: (value: string) => void
+  userLatitude: string
+  setUserLatitude: (value: string) => void
+  userLongitude: string
+  setUserLongitude: (value: string) => void
+  getLocation: () => void
+  handleCalculateOrderPrice: () => void
+  priceBreakdown: PriceBreakdown
+  deliveryNotAvailable: boolean
 }
 
-function DeliveryOrderForm(props: DeliveryOrderFormProps) {
+export function DeliveryOrderForm(props: DeliveryOrderFormProps) {
   const {
     venueSlug,
-    setVenueSlug,
     cartValue,
     setCartValue,
     userLatitude,
@@ -34,8 +33,9 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
     userLongitude,
     setUserLongitude,
     getLocation,
-    handleCalculateDeliveryPrice,
+    handleCalculateOrderPrice,
     priceBreakdown,
+    deliveryNotAvailable,
   } = props
 
   return (
@@ -49,22 +49,18 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
       </Typography>
 
       <Box component="form" noValidate autoComplete="off" className="form">
-        <TextField
-          label="Venue slug"
-          value={venueSlug}
-          onChange={(e) => setVenueSlug(e.target.value)}
-          className="form-field"
-          variant="outlined"
-          data-test-id="venueSlug"
-        />
+        <Typography>Venue slug: {venueSlug}</Typography>
         <TextField
           label="Cart value (EUR)"
-          type="number"
           value={cartValue}
           onChange={(e) => setCartValue(e.target.value)}
           className="form-field"
           variant="outlined"
           data-test-id="cartValue"
+          error={isNaN(Number(cartValue))}
+          helperText={
+            isNaN(Number(cartValue)) ? "Please enter a valid number (0.0)" : ""
+          }
         />
         <TextField
           label="User latitude"
@@ -73,6 +69,10 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
           className="form-field"
           variant="outlined"
           data-test-id="userLatitude"
+          error={isNaN(Number(userLatitude))}
+          helperText={
+            isNaN(Number(userLatitude)) ? "Please enter a valid number" : ""
+          }
         />
         <TextField
           label="User longitude"
@@ -81,6 +81,10 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
           className="form-field"
           variant="outlined"
           data-test-id="userLongitude"
+          error={isNaN(Number(userLongitude))}
+          helperText={
+            isNaN(Number(userLongitude)) ? "Please enter a valid number" : ""
+          }
         />
         <Box className="button-container">
           <Button
@@ -93,8 +97,16 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
           </Button>
           <Button
             variant="contained"
-            onClick={handleCalculateDeliveryPrice}
+            onClick={handleCalculateOrderPrice}
             className="button"
+            disabled={
+              cartValue === "" ||
+              isNaN(Number(cartValue)) ||
+              userLatitude === "" ||
+              isNaN(Number(userLatitude)) ||
+              userLongitude === "" ||
+              isNaN(Number(userLongitude))
+            }
           >
             Calculate delivery price
           </Button>
@@ -104,8 +116,14 @@ function DeliveryOrderForm(props: DeliveryOrderFormProps) {
       <Divider />
 
       <PriceBreakdownBox priceBreakdown={priceBreakdown} />
+
+      {deliveryNotAvailable == true && (
+        <Box>
+          <Typography variant="h5" sx={{ color: "red" }}>
+            Delivery is not available!
+          </Typography>
+        </Box>
+      )}
     </Container>
   )
 }
-
-export default DeliveryOrderForm

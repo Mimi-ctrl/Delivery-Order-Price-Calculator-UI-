@@ -41,5 +41,36 @@ Used time: 4h
 
 Next Step:
 - Implement API integration for dynamic price calculations.
-- Add an error message if the wrong type of information is entered in the field.
+
+-----------------------------------------------------------------------------------------
+
+Date: 2025-01-20
+Used time: 2h
+
+- Began implementing API integration for price calculations.
+
+Next Steps:
+- Continue implementing API integration for price calculations.
+
+-----------------------------------------------------------------------------------------
+
+Date: 2025-01-22
+Used time: 4h
+
+- Continued to implementing API integration for price calculations.
+
+Next Steps:
+- Add validation and error messages for incorrect field inputs.
+- Perform further code refactoring
+
+-----------------------------------------------------------------------------------------
+
+Date: 2025-01-23
+Used time: 3h
+
+- Added validation and error messages for incorrect field inputs.
 - More code refactoring.
+
+Next Steps:
+- Add unit test
+- Add more documentation
