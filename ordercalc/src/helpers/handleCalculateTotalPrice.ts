@@ -14,6 +14,7 @@ export const handleCalculateTotalPrice = (
 ) => {
   const cartValueNumber = parseFloat(cartValue)
   if (venueData) {
+    setDeliveryNotAvailable(false)
     const distance = calculateDistance(
       Number(userLatitude),
       Number(userLongitude),
@@ -35,6 +36,13 @@ export const handleCalculateTotalPrice = (
       )
     } else {
       setDeliveryNotAvailable(true)
+      handleSetPriceBreakdown(
+        0,
+        0,
+        distance,
+        0,
+        setPriceBreakdown
+      )
     }
   }
 }
