@@ -1,4 +1,4 @@
-import { DistanceRange } from "../types/data"
+import { DistanceRange } from "../types/Data"
 
 export const getCorrectDistanceRange = (
   distanceRanges: DistanceRange[],

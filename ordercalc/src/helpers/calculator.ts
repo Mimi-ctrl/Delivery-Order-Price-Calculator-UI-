@@ -1,4 +1,4 @@
-import { PriceBreakdown } from "../types"
+import { PriceBreakdown } from "../types/PriceBreakdown"
 
 export const calculateOrderPrice = (
   cartValue: number,
@@ -7,8 +7,8 @@ export const calculateOrderPrice = (
   orderMinimumNoSurcharge: number
 ): PriceBreakdown => {
   const smallOrderSurcharge =
-    cartValue < orderMinimumNoSurcharge / 100
-      ? orderMinimumNoSurcharge / 100 - cartValue
+    cartValue < orderMinimumNoSurcharge
+      ? orderMinimumNoSurcharge - cartValue
       : 0
   const totalPrice =
     cartValue > 0 ? cartValue + deliveryFee + smallOrderSurcharge : 0

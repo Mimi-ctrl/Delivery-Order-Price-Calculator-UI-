@@ -1,4 +1,4 @@
-import { DynamicData, ExtractedData, StaticData } from "../types/data"
+import { DynamicData, ExtractedData, StaticData } from "../types/Data"
 
 const url =
   "https://consumer-api.development.dev.woltapi.com/home-assignment-api/v1/venues"
@@ -43,8 +43,8 @@ export const getVenueData = async (
   const extract: ExtractedData = {
     coordinates: stat.venue_raw.location.coordinates,
     orderMinimumNoSurcharge:
-      dynam.venue_raw.delivery_specs.order_minimum_no_surcharge,
-    basePrice: dynam.venue_raw.delivery_specs.delivery_pricing.base_price,
+      dynam.venue_raw.delivery_specs.order_minimum_no_surcharge / 100, // cent to euro
+    basePrice: dynam.venue_raw.delivery_specs.delivery_pricing.base_price / 100, // cent to euro
     distanceRanges:
       dynam.venue_raw.delivery_specs.delivery_pricing.distance_ranges,
   }

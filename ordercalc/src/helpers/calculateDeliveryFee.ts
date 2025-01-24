@@ -1,6 +1,6 @@
 import { getCorrectDistanceRange } from "./getCorrectDistanceRange"
 import { calculateDistance } from "./calculateDistance"
-import { ExtractedData, DistanceRange } from "../types/data"
+import { ExtractedData, DistanceRange } from "../types/Data"
 
 export const calculateDeliveryFee = (
   venueData: ExtractedData,
@@ -22,7 +22,7 @@ export const calculateDeliveryFee = (
 
   if (correctDistanceRange) {
     return (
-      venueData.basePrice / 100 +
+      venueData.basePrice +
       correctDistanceRange.a +
       (correctDistanceRange.b * distance) / 10
     )

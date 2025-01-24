@@ -1,8 +1,9 @@
 import { Box, Typography } from "@mui/material"
-import { PriceBreakdown as PriceBreakdownType } from "../types"
+import { PriceBreakdown } from "../types/PriceBreakdown"
+import React from "react" // For testing
 
 type PriceBreakdownProps = {
-  priceBreakdown: PriceBreakdownType
+  priceBreakdown: PriceBreakdown
 }
 
 export const PriceBreakdownBox = ({ priceBreakdown }: PriceBreakdownProps) => {

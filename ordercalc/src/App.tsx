@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
 import { GetLocation } from "./hooks/GetLocation"
 import { DeliveryOrderForm } from "./components/DeliveryOrderForm"
-import { PriceBreakdown } from "./types"
+import { PriceBreakdown } from "./types/PriceBreakdown"
 import { getVenueData } from "./networking/api"
-import { ExtractedData } from "./types/data"
+import { ExtractedData } from "./types/Data"
 import { handleCalculateTotalPrice } from "./helpers/handleCalculateTotalPrice"
-import "./styles/App.css"
+import React from "react" // For testing
 
 export const DeliveryOrderPriceCalculator = () => {
   const {

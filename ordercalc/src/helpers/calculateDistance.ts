@@ -16,7 +16,7 @@ export const calculateDistance = (
   const step2 = Math.sin(longitudeDifference / 2)
 
   const calculation =
-    step1 * step2 + Math.cos(latitude1) * Math.cos(latitude2) * step2 * step2
+    step1 * step1 + Math.cos(latitude1) * Math.cos(latitude2) * step2 * step2
   const centralAngle =
     2 * Math.atan2(Math.sqrt(calculation), Math.sqrt(1 - calculation))
   const distance = eathRadiusMeters * centralAngle

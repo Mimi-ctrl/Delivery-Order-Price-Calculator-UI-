@@ -74,3 +74,11 @@ Used time: 3h
 Next Steps:
 - Add unit test.
 - Add more documentation.
+
+-----------------------------------------------------------------------------------------
+
+Date: 2025-01-24
+Used time: 4h
+
+- Added unit tests.
+- Added more documentation.

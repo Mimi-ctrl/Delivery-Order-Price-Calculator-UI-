@@ -25,6 +25,10 @@ npm start
 npm test
 ```
 
+### Create test coverage report
+npm test -- --coverage
+
+
 ## Used libraries:
 MUI: https://mui.com/
 

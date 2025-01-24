@@ -1,8 +1,8 @@
 import { calculateDeliveryFee } from "./calculateDeliveryFee"
 import { calculateDistance } from "./calculateDistance"
-import { ExtractedData } from "../types/data"
+import { ExtractedData } from "../types/Data"
 import { handleSetPriceBreakdown } from "./calculator"
-import { PriceBreakdown } from "../types"
+import { PriceBreakdown } from "../types/PriceBreakdown"
 
 export const handleCalculateTotalPrice = (
   cartValue: string,
