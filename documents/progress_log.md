@@ -61,7 +61,7 @@ Used time: 4h
 
 Next Steps:
 - Add validation and error messages for incorrect field inputs.
-- Perform further code refactoring
+- Perform further code refactoring.
 
 -----------------------------------------------------------------------------------------
 
@@ -72,5 +72,5 @@ Used time: 3h
 - More code refactoring.
 
 Next Steps:
-- Add unit test
-- Add more documentation
+- Add unit test.
+- Add more documentation.
