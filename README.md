@@ -4,6 +4,8 @@ Delivery order price calculator web app using React, Vite and TypeScript, which 
 
 ## Setup Instructions
 
+First make sure you have installed npm! https://www.npmjs.com/ 
+
 ### Go to the correct directory:
 ```
 cd ordercalc
