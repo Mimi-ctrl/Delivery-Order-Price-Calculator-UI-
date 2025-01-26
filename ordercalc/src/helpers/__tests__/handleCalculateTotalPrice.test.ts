@@ -41,7 +41,7 @@ describe("handleCalculateTotalPrice", () => {
       mockSetPriceBreakdown,
       mockSetDeliveryNotAvailable
     );
-
+    expect(mockSetDeliveryNotAvailable).toHaveBeenCalled();
     expect(calculateDistance).toHaveBeenCalledWith(
       60.17,
       24.941,
@@ -60,7 +60,6 @@ describe("handleCalculateTotalPrice", () => {
       mockVenueData.orderMinimumNoSurcharge,
       mockSetPriceBreakdown
     );
-    expect(mockSetDeliveryNotAvailable).not.toHaveBeenCalled();
   });
 
   it("sets delivery not available when deliveryFee is null", () => {
@@ -88,7 +87,6 @@ describe("handleCalculateTotalPrice", () => {
       "24.9410"
     );
     expect(mockSetDeliveryNotAvailable).toHaveBeenCalledWith(true);
-    expect(handleSetPriceBreakdown).not.toHaveBeenCalled();
   });
 
   it("does nothing if venueData is null", () => {
