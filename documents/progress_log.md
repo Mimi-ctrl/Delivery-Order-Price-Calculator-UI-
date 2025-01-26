@@ -82,6 +82,3 @@ Used time: 4h
 
 - Added unit tests.
 - Added more documentation.
-
-How to Improve:
-- 
