@@ -4,9 +4,8 @@ Delivery order price calculator web app using React, Vite and TypeScript, which 
 
 ## Setup Instructions
 
-### Clone the Repository:
+### Go to the correct directory:
 ```
-git clone repo
 cd ordercalc
 ```
 
